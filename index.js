@@ -17,14 +17,14 @@ app.get('/', (req, res) => {
     to: toDate,
     period: 'd'  // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
   }, function (err, quotes) {
-    res.json(quotes);
+    res.json(quotes.slice(0, 30));
   });
 
 });
 
 function getDates() {
   let fromDate = new Date()
-  fromDate.setDate(fromDate.getDate()-30);
+  fromDate.setDate(fromDate.getDate()-60);
   fromDate = fromDate.toISOString().slice(0, 10);
   
   // dia atual
